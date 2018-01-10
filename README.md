@@ -4,3 +4,7 @@ One of UI library for [ImageGlass](https://github.com/ImageGlass/ImageGlass-Phot
 
 ### Demo
 https://codepen.io/d2phap/full/rpJEaK/
+
+
+### Dependencies
+- jQuery
