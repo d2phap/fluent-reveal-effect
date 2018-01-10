@@ -1,5 +1,5 @@
 /*
-Fluent Design Lighting Effect, v1.0.0.0
+Fluent Design Lighting Effect, v0.1
 https://github.com/d2phap/fluent-ui
 
 MIT License
@@ -27,7 +27,7 @@ class FluentUI {
 
 	static info() {
 		return {
-			"version": "1.0.0.0",
+			"version": "0.1",
 			"author": "Duong Dieu Phap",
 			"url": "https://github.com/d2phap/fluent-ui"
 		}
