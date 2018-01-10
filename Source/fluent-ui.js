@@ -41,7 +41,7 @@ class FluentUI {
 			original_bg: $(selector).css("background-image"),
 			light_color: "rgba(255,255,255,0.15)",
 			light_effect_size: $(selector).outerWidth(),
-			click_effect_enable: false,
+			click_effect_enable: true,
 			click_effect_size: 70
 		}
 
