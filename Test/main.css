@@ -1,15 +1,21 @@
 body {
 	background-color: #282828;
-
+	padding: 3rem;
 }
+
+.toolbar {
+	text-align: center;
+}
+
+
+
 
 .btn {
 	padding: 1rem 2rem;
 	background-color: transparent;
 	color: #fff;
 	border: 0;
-	border-radius: 2px;
-
+	
 	transition: all 200ms ease;
 }
 .btn:focus {
