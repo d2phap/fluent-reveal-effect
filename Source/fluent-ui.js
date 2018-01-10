@@ -40,7 +40,7 @@ class FluentUI {
 		let _options = {
 			original_bg: $(selector).css("background-image"),
 			light_color: "rgba(255,255,255,0.15)",
-			gradient_size: $(selector).outerWidth(),
+			light_effect_size: $(selector).outerWidth(),
 			click_effect_enable: false,
 			click_effect_size: 70
 		}
@@ -57,7 +57,7 @@ class FluentUI {
 				let x = e.pageX - $element.offset().left
 				let y = e.pageY - $element.offset().top
 
-				bg_light = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0))`
+				bg_light = `radial-gradient(circle ${_options.light_effect_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0))`
 			}
 			else {
 				bg_light = css_light_effect
@@ -79,7 +79,7 @@ class FluentUI {
 				let x = e.pageX - $(this).offset().left
 				let y = e.pageY - $(this).offset().top
 
-				let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${_options.click_effect_size}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
+				let css_light_effect = `radial-gradient(circle ${_options.light_effect_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${_options.click_effect_size}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
 
 				drawEffect($(this), e, css_light_effect)
 			}
@@ -103,7 +103,7 @@ class FluentUI {
 				let x = e.pageX - $(this).offset().left
 				let y = e.pageY - $(this).offset().top
 	
-				let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${_options.click_effect_size}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
+				let css_light_effect = `radial-gradient(circle ${_options.light_effect_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${_options.click_effect_size}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
 	
 				drawEffect($(this), e, css_light_effect)
 			});
