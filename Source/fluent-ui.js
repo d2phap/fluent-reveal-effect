@@ -90,6 +90,7 @@ class FluentUI {
 
 
 		$(selector).mouseleave(function () {
+			is_pressed = false
 			clearEffect($(this))
 		})
 		
