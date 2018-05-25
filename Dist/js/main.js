@@ -72,6 +72,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_main_scss__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_modules_reveal__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_modules_reveal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_modules_reveal__);
 
 
 
@@ -86,9 +87,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
 /*
 Reveal Effect
 https://github.com/d2phap/fluent-ui
@@ -259,10 +259,8 @@ class RevealEffect {
 		
 	}
 
-	
-}
-/* unused harmony export RevealEffect */
 
+}
 
 
 

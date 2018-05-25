@@ -24,7 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export class RevealEffect {
+class RevealEffect {
 
 	static info() {
 		return {
@@ -168,7 +168,7 @@ export class RevealEffect {
 		
 	}
 
-	
+
 }
 
 

@@ -1,14 +1,23 @@
 
 
-FluentUI.applyTo(".toolbar", {
+RevealEffect.applyTo(".toolbar", {
 	light_color: "rgba(255,255,255,0.1)",
-	light_effect_size: 400,
-	click_effect_enable: false
+	gradient_size: 500,
 })
 
-FluentUI.applyTo(".btn", {
-	light_color: "rgba(255,255,255,0.2)",
-	
+RevealEffect.applyTo(".toolbar > .btn", {
+	click_effect: true,
+})
+
+RevealEffect.applyTo(".effect-group-container", {
+	click_effect: true,
+	light_color: "rgba(255,255,255,0.3)",
+	gradient_size: 100,
+	is_container: true,
+	children: {
+		border: ".btn-border",
+		el: ".btn"
+	}
 })
 
 
