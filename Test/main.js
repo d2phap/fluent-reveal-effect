@@ -11,12 +11,14 @@ RevealEffect.applyTo(".toolbar > .btn", {
 
 RevealEffect.applyTo(".effect-group-container", {
 	click_effect: true,
-	light_color: "rgba(255,255,255,0.3)",
-	gradient_size: 100,
+	light_color: "rgba(255,255,255,0.6)",
+	gradient_size: 80,
 	is_container: true,
 	children: {
 		border: ".btn-border",
-		el: ".btn"
+		el: ".btn",
+		light_color: "rgba(255,255,255,0.3)",
+		gradient_size: 150,
 	}
 })
 

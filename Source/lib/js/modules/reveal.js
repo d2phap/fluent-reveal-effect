@@ -46,7 +46,9 @@ class RevealEffect {
 			is_container: false,
 			children: {
 				border: ".btn-border",
-				el: ".btn"
+				el: ".btn",
+				light_color: "rgba(255,255,255,0.25)",
+				gradient_size: $(selector).outerWidth()
 			}
 		}
 
@@ -54,13 +56,13 @@ class RevealEffect {
 		_options = Object.assign(_options, options)
 
 
-		function drawEffect($element, x, y, css_light_effect = null) {
+		function drawEffect($element, x, y, light_color, gradient_size, css_light_effect = null) {
 
 			let bg_light;
 
 			if (css_light_effect === null) {
 
-				bg_light = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0))`
+				bg_light = `radial-gradient(circle ${gradient_size}px at ${x}px ${y}px, ${light_color}, rgba(255,255,255,0))`
 			}
 			else {
 				bg_light = css_light_effect
@@ -75,7 +77,7 @@ class RevealEffect {
 		}
 
 
-		function enableBackgroundEffects($element) {
+		function enableBackgroundEffects($element, light_color, gradient_size) {
 			//element background effect --------------------
 			$element.mousemove(function (e) {
 				let x = e.pageX - $(this).offset().left
@@ -83,12 +85,12 @@ class RevealEffect {
 
 				if (_options.click_effect && is_pressed) {
 
-					let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
+					let css_light_effect = `radial-gradient(circle ${gradient_size}px at ${x}px ${y}px, ${light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
 
-					drawEffect($(this), x, y, css_light_effect)
+					drawEffect($(this), x, y, light_color, gradient_size, css_light_effect)
 				}
 				else {
-					drawEffect($(this), x, y)
+					drawEffect($(this), x, y, light_color, gradient_size)
 				}
 			})
 
@@ -99,16 +101,16 @@ class RevealEffect {
 		}
 
 
-		function enableClickEffects($element) {
+		function enableClickEffects($element, light_color, gradient_size) {
 			$element.mousedown(function(e) {
 				is_pressed = true;
 	
 				let x = e.pageX - $(this).offset().left
 				let y = e.pageY - $(this).offset().top
 	
-				let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
+				let css_light_effect = `radial-gradient(circle ${gradient_size}px at ${x}px ${y}px, ${light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
 	
-				drawEffect($(this), x, y, css_light_effect)
+				drawEffect($(this), x, y, light_color, gradient_size, css_light_effect)
 			});
 	
 			$element.mouseup(function(e) {
@@ -116,7 +118,7 @@ class RevealEffect {
 				let x = e.pageX - $(this).offset().left
 				let y = e.pageY - $(this).offset().top
 
-				drawEffect($(this), x, y)
+				drawEffect($(this), x, y, light_color, gradient_size)
 			});
 		}
 
@@ -126,11 +128,11 @@ class RevealEffect {
 		if (!_options.is_container) {
 
 			//element background effect --------------------
-			enableBackgroundEffects($(selector))
+			enableBackgroundEffects($(selector), _options.light_color, _options.gradient_size)
 
 			//element click effect --------------------
 			if (_options.click_effect) {
-				enableClickEffects($(selector))
+				enableClickEffects($(selector), _options.light_color, _options.gradient_size)
 			}
 			
 		}
@@ -146,7 +148,7 @@ class RevealEffect {
 					let x = e.pageX - $(items[i]).offset().left
 					let y = e.pageY - $(items[i]).offset().top
 
-					drawEffect($(items[i]), x, y)
+					drawEffect($(items[i]), x, y, _options.light_color, _options.gradient_size)
 				}
 			})
 
@@ -156,11 +158,11 @@ class RevealEffect {
 
 
 			//element background effect --------------------
-			enableBackgroundEffects($(selector).find(_options.children.el))
+			enableBackgroundEffects($(selector).find(_options.children.el), _options.children.light_color, _options.children.gradient_size)
 
 			//element click effect --------------------
 			if (_options.click_effect) {
-				enableClickEffects($(selector).find(_options.children.el))
+				enableClickEffects($(selector).find(_options.children.el), _options.children.light_color, _options.children.gradient_size)
 			}
 
 		}
