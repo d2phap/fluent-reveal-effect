@@ -1,24 +1,24 @@
 
 
 RevealEffect.applyTo(".toolbar", {
-	light_color: "rgba(255,255,255,0.1)",
-	gradient_size: 500,
+	lightColor: "rgba(255,255,255,0.1)",
+	gradientSize: 500,
 })
 
 RevealEffect.applyTo(".toolbar > .btn", {
-	click_effect: true,
+	clickEffect: true,
 })
 
 RevealEffect.applyTo(".effect-group-container", {
-	click_effect: true,
-	light_color: "rgba(255,255,255,0.6)",
-	gradient_size: 80,
-	is_container: true,
+	clickEffect: true,
+	lightColor: "rgba(255,255,255,0.6)",
+	gradientSize: 80,
+	isContainer: true,
 	children: {
-		border: ".btn-border",
-		el: ".btn",
-		light_color: "rgba(255,255,255,0.3)",
-		gradient_size: 150,
+		borderSelector: ".btn-border",
+		elementSelector: ".btn",
+		lightColor: "rgba(255,255,255,0.3)",
+		gradientSize: 150,
 	}
 })
 
