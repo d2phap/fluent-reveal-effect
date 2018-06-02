@@ -73,24 +73,18 @@ module.exports = __webpack_require__(4);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_js_main__ = __webpack_require__(2);
-/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "FluentRevealEffect", function() { return __WEBPACK_IMPORTED_MODULE_0__lib_js_main__["a"]; });
+/***/ (function(module, exports, __webpack_require__) {
 
 
+var FluentRevealEffect = __webpack_require__(2)
 
 
-
+module.exports = { FluentRevealEffect }
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__ = __webpack_require__(3);
 /*
 Reveal Effect
 https://github.com/d2phap/fluent-reveal-effect
@@ -117,170 +111,160 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
+var Helpers = __webpack_require__(3)
 
 
-class FluentRevealEffect {
+function applyEffect(selector, options = {}) {
+	
+	let is_pressed = false
 
-
-	static applyTo(selector, options = {}) {
-		
-		let is_pressed = false
-
-		let _options = {
+	let _options = {
+		lightColor: "rgba(255,255,255,0.25)",
+		gradientSize: 150,
+		clickEffect: false,
+		isContainer: false,
+		children: {
+			borderSelector: ".btn-border",
+			elementSelector: ".btn",
 			lightColor: "rgba(255,255,255,0.25)",
-			gradientSize: 150,
-			clickEffect: false,
-			isContainer: false,
-			children: {
-				borderSelector: ".btn-border",
-				elementSelector: ".btn",
-				lightColor: "rgba(255,255,255,0.25)",
-				gradientSize: 150
-			}
-		}
-
-		// update options
-		_options = Object.assign(_options, options)
-		let els =  __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(document.querySelectorAll(selector))
-		
-		
-
-
-		function clearEffect(element) {
-			element.el.style.backgroundImage = element.oriBg
-		}
-
-
-		function enableBackgroundEffects(element, lightColor, gradientSize) {
-			
-			//element background effect --------------------
-			element.el.addEventListener("mousemove", (e) => {
-				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
-				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
-
-				if (_options.clickEffect && is_pressed) {
-
-					let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
-
-					__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
-				}
-				else {
-					__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize)
-				}	
-			})
-
-
-			element.el.addEventListener("mouseleave", (e) => {
-				clearEffect(element)
-			})
-		}
-
-
-
-		function enableClickEffects(element, lightColor, gradientSize) {
-			element.el.addEventListener("mousedown", (e) => {
-				is_pressed = true
-				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
-				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
-		
-				let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
-		
-				__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
-			})
-		
-			element.el.addEventListener("mouseup", (e) => {
-				is_pressed = false
-				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
-				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
-		
-				__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize)
-			})
-		}
-
-
-
-
-		//Children *********************************************
-		if (!_options.isContainer) {
-
-			//element background effect
-			els.forEach(element => {
-				enableBackgroundEffects(element, _options.lightColor, _options.gradientSize)
-
-				//element click effect
-				if (_options.clickEffect) {
-					enableClickEffects(element, _options.lightColor, _options.gradientSize)
-				}
-			})
-			
-		}
-		//Container *********************************************
-		else {
-
-			els.forEach(element => {
-
-				// get border items list
-				let childrenBorder = _options.isContainer ? __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
-
-				
-				//Container *********************************************
-				//add border effect
-				element.el.addEventListener("mousemove", (e) => {
-					for (let i = 0; i < childrenBorder.length; i++) {
-						let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(childrenBorder[i]).left
-						let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(childrenBorder[i]).top
-
-						__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
-					}
-				})
-
-				//clear border light effect
-				element.el.addEventListener("mouseleave", (e) => {
-					for (let i = 0; i < childrenBorder.length; i++) {
-						clearEffect(childrenBorder[i])
-					}					
-				})
-
-
-				//Children *********************************************
-				let children =  __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
-				// console.log(children)
-
-				for (let i = 0; i < children.length; i++) {
-
-					//element background effect
-					enableBackgroundEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
-
-					//element click effect
-					if (_options.clickEffect) {
-						enableClickEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
-					}
-				}
-
-			})
-
+			gradientSize: 150
 		}
 	}
 
+	// update options
+	_options = Object.assign(_options, options)
+	let els =  Helpers.preProcessElements(document.querySelectorAll(selector))
+	
+	
 
+
+	function clearEffect(element) {
+		element.el.style.backgroundImage = element.oriBg
+	}
+
+
+	function enableBackgroundEffects(element, lightColor, gradientSize) {
+		
+		//element background effect --------------------
+		element.el.addEventListener("mousemove", (e) => {
+			let x = e.pageX - Helpers.getOffset(element).left
+			let y = e.pageY - Helpers.getOffset(element).top
+
+			if (_options.clickEffect && is_pressed) {
+
+				let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
+
+				Helpers.drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
+			}
+			else {
+				Helpers.drawEffect(element, x, y, lightColor, gradientSize)
+			}	
+		})
+
+
+		element.el.addEventListener("mouseleave", (e) => {
+			clearEffect(element)
+		})
+	}
+
+
+
+	function enableClickEffects(element, lightColor, gradientSize) {
+		element.el.addEventListener("mousedown", (e) => {
+			is_pressed = true
+			let x = e.pageX - Helpers.getOffset(element).left
+			let y = e.pageY - Helpers.getOffset(element).top
+	
+			let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
+	
+			Helpers.drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
+		})
+	
+		element.el.addEventListener("mouseup", (e) => {
+			is_pressed = false
+			let x = e.pageX - Helpers.getOffset(element).left
+			let y = e.pageY - Helpers.getOffset(element).top
+	
+			Helpers.drawEffect(element, x, y, lightColor, gradientSize)
+		})
+	}
+
+
+
+
+	//Children *********************************************
+	if (!_options.isContainer) {
+
+		//element background effect
+		els.forEach(element => {
+			enableBackgroundEffects(element, _options.lightColor, _options.gradientSize)
+
+			//element click effect
+			if (_options.clickEffect) {
+				enableClickEffects(element, _options.lightColor, _options.gradientSize)
+			}
+		})
+		
+	}
+	//Container *********************************************
+	else {
+
+		els.forEach(element => {
+
+			// get border items list
+			let childrenBorder = _options.isContainer ? Helpers.preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
+
+			
+			//Container *********************************************
+			//add border effect
+			element.el.addEventListener("mousemove", (e) => {
+				for (let i = 0; i < childrenBorder.length; i++) {
+					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left
+					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top
+
+					Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+				}
+			})
+
+			//clear border light effect
+			element.el.addEventListener("mouseleave", (e) => {
+				for (let i = 0; i < childrenBorder.length; i++) {
+					clearEffect(childrenBorder[i])
+				}					
+			})
+
+
+			//Children *********************************************
+			let children =  Helpers.preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
+			// console.log(children)
+
+			for (let i = 0; i < children.length; i++) {
+
+				//element background effect
+				enableBackgroundEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
+
+				//element click effect
+				if (_options.clickEffect) {
+					enableClickEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
+				}
+			}
+
+		})
+
+	}
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = FluentRevealEffect;
 
 
 
 
-
-
-
-
+module.exports = { applyEffect }
 
 
 
 /***/ }),
 /* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
 /*
 Reveal Effect
 https://github.com/d2phap/fluent-reveal-effect
@@ -308,50 +292,47 @@ SOFTWARE.
 */
 
 
-class Helpers {
 
-	static getOffset(element) {
-		return {
-			top: element.el.offsetTop,
-			left: element.el.offsetLeft
-		}
-	}
-
-
-
-	static drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
-		let lightBg
-
-		if (cssLightEffect === null) {
-			lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
-		}
-		else {
-			lightBg = cssLightEffect
-		}
-
-		element.el.style.backgroundImage = lightBg
-	}
-
-
-
-	static preProcessElements(elements) {
-		let res = []
-
-		elements.forEach(el => {
-			res.push({
-				oriBg: getComputedStyle(el)["background-image"],
-				el: el
-			})
-		})
-
-		return res
+function getOffset(element) {
+	return {
+		top: element.el.offsetTop,
+		left: element.el.offsetLeft
 	}
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = Helpers;
 
 
 
+function drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
+	let lightBg
 
+	if (cssLightEffect === null) {
+		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
+	}
+	else {
+		lightBg = cssLightEffect
+	}
+
+	element.el.style.backgroundImage = lightBg
+}
+
+
+
+function preProcessElements(elements) {
+	let res = []
+
+	elements.forEach(el => {
+		res.push({
+			oriBg: getComputedStyle(el)["background-image"],
+			el: el
+		})
+	})
+
+	return res
+}
+
+
+
+module.exports = { preProcessElements, getOffset, drawEffect }
 
 /***/ }),
 /* 4 */

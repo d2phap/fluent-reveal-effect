@@ -1,5 +1,5 @@
 
-import FluentRevealEffect from "./lib/js/main"
+var FluentRevealEffect = require("./lib/js/main")
 
 
-export { FluentRevealEffect }
+module.exports = { FluentRevealEffect }

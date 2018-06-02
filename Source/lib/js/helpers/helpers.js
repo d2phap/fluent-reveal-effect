@@ -25,44 +25,44 @@ SOFTWARE.
 */
 
 
-export default class Helpers {
 
-	static getOffset(element) {
-		return {
-			top: element.el.offsetTop,
-			left: element.el.offsetLeft
-		}
-	}
-
-
-
-	static drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
-		let lightBg
-
-		if (cssLightEffect === null) {
-			lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
-		}
-		else {
-			lightBg = cssLightEffect
-		}
-
-		element.el.style.backgroundImage = lightBg
-	}
-
-
-
-	static preProcessElements(elements) {
-		let res = []
-
-		elements.forEach(el => {
-			res.push({
-				oriBg: getComputedStyle(el)["background-image"],
-				el: el
-			})
-		})
-
-		return res
+function getOffset(element) {
+	return {
+		top: element.el.offsetTop,
+		left: element.el.offsetLeft
 	}
 }
 
 
+
+function drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
+	let lightBg
+
+	if (cssLightEffect === null) {
+		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
+	}
+	else {
+		lightBg = cssLightEffect
+	}
+
+	element.el.style.backgroundImage = lightBg
+}
+
+
+
+function preProcessElements(elements) {
+	let res = []
+
+	elements.forEach(el => {
+		res.push({
+			oriBg: getComputedStyle(el)["background-image"],
+			el: el
+		})
+	})
+
+	return res
+}
+
+
+
+module.exports = { preProcessElements, getOffset, drawEffect }
