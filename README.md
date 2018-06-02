@@ -57,7 +57,7 @@ FluentRevealEffect.applyEffect(".btn", {
 
 #### Enable Ripple click effect
 ````js
-FluentRevealEffect.applyEffect(".toolbar > .btn", {
+FluentRevealEffect.applyEffect(".btn", {
 	clickEffect: true
 })
 ````
