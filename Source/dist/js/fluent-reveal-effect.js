@@ -65,33 +65,35 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_main_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_modules_reveal__ = __webpack_require__(2);
-
-
-
-
+__webpack_require__(1);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__lib_js_main__ = __webpack_require__(2);
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "FluentRevealEffect", function() { return __WEBPACK_IMPORTED_MODULE_0__lib_js_main__["a"]; });
+
+
+
+
+
 
 /***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__ = __webpack_require__(3);
 /*
 Reveal Effect
-https://github.com/d2phap/fluent-ui
+https://github.com/d2phap/fluent-reveal-effect
 
 MIT License
 Copyright (c) 2018 Duong Dieu Phap
@@ -116,11 +118,12 @@ SOFTWARE.
 */
 
 
+
 class FluentRevealEffect {
 
 
 	static applyTo(selector, options = {}) {
-
+		
 		let is_pressed = false
 
 		let _options = {
@@ -138,7 +141,7 @@ class FluentRevealEffect {
 
 		// update options
 		_options = Object.assign(_options, options)
-		let els = preProcessElements(document.querySelectorAll(selector))
+		let els =  __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(document.querySelectorAll(selector))
 		
 		
 
@@ -152,17 +155,17 @@ class FluentRevealEffect {
 			
 			//element background effect --------------------
 			element.el.addEventListener("mousemove", (e) => {
-				let x = e.pageX - getOffset(element).left
-				let y = e.pageY - getOffset(element).top
+				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
+				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
 
 				if (_options.clickEffect && is_pressed) {
 
 					let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
 
-					drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
+					__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
 				}
 				else {
-					drawEffect(element, x, y, lightColor, gradientSize)
+					__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize)
 				}	
 			})
 
@@ -177,20 +180,20 @@ class FluentRevealEffect {
 		function enableClickEffects(element, lightColor, gradientSize) {
 			element.el.addEventListener("mousedown", (e) => {
 				is_pressed = true
-				let x = e.pageX - getOffset(element).left
-				let y = e.pageY - getOffset(element).top
+				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
+				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
 		
 				let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
 		
-				drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
+				__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
 			})
 		
 			element.el.addEventListener("mouseup", (e) => {
 				is_pressed = false
-				let x = e.pageX - getOffset(element).left
-				let y = e.pageY - getOffset(element).top
+				let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).left
+				let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(element).top
 		
-				drawEffect(element, x, y, lightColor, gradientSize)
+				__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(element, x, y, lightColor, gradientSize)
 			})
 		}
 
@@ -217,17 +220,17 @@ class FluentRevealEffect {
 			els.forEach(element => {
 
 				// get border items list
-				let childrenBorder = _options.isContainer ? preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
+				let childrenBorder = _options.isContainer ? __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
 
 				
 				//Container *********************************************
 				//add border effect
 				element.el.addEventListener("mousemove", (e) => {
 					for (let i = 0; i < childrenBorder.length; i++) {
-						let x = e.pageX - getOffset(childrenBorder[i]).left
-						let y = e.pageY - getOffset(childrenBorder[i]).top
+						let x = e.pageX - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(childrenBorder[i]).left
+						let y = e.pageY - __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].getOffset(childrenBorder[i]).top
 
-						drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+						__WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
 					}
 				})
 
@@ -240,7 +243,7 @@ class FluentRevealEffect {
 
 
 				//Children *********************************************
-				let children = preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
+				let children =  __WEBPACK_IMPORTED_MODULE_0__helpers_helpers__["a" /* default */].preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
 				// console.log(children)
 
 				for (let i = 0; i < children.length; i++) {
@@ -258,53 +261,103 @@ class FluentRevealEffect {
 
 		}
 	}
+
+
 }
-/* unused harmony export default */
+/* harmony export (immutable) */ __webpack_exports__["a"] = FluentRevealEffect;
 
 
 
 
-function getOffset(element) {
-	return {
-		top: element.el.offsetTop,
-		left: element.el.offsetLeft
+
+
+
+
+
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/*
+Reveal Effect
+https://github.com/d2phap/fluent-reveal-effect
+
+MIT License
+Copyright (c) 2018 Duong Dieu Phap
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+
+
+class Helpers {
+
+	static getOffset(element) {
+		return {
+			top: element.el.offsetTop,
+			left: element.el.offsetLeft
+		}
 	}
-}
 
 
 
-function drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
-	let lightBg
+	static drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
+		let lightBg
 
-	if (cssLightEffect === null) {
-		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
+		if (cssLightEffect === null) {
+			lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
+		}
+		else {
+			lightBg = cssLightEffect
+		}
+
+		element.el.style.backgroundImage = lightBg
 	}
-	else {
-		lightBg = cssLightEffect
-	}
-
-	element.el.style.backgroundImage = lightBg
-}
 
 
 
-function preProcessElements(elements) {
-	let res = []
+	static preProcessElements(elements) {
+		let res = []
 
-	elements.forEach(el => {
-		res.push({
-			oriBg: getComputedStyle(el)["background-image"],
-			el: el
+		elements.forEach(el => {
+			res.push({
+				oriBg: getComputedStyle(el)["background-image"],
+				el: el
+			})
 		})
-	})
 
-	return res
+		return res
+	}
 }
+/* harmony export (immutable) */ __webpack_exports__["a"] = Helpers;
 
 
 
 
 
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

@@ -1,15 +1,22 @@
+import FluentRevealEffect from "../lib/js/main"
+
+// console.log(FluentRevealEffect)
 
 
-RevealEffect.applyTo(".toolbar", {
+
+
+
+
+FluentRevealEffect.applyTo(".toolbar", {
 	lightColor: "rgba(255,255,255,0.1)",
 	gradientSize: 500,
 })
 
-RevealEffect.applyTo(".toolbar > .btn", {
+FluentRevealEffect.applyTo(".toolbar > .btn", {
 	clickEffect: true,
 })
 
-RevealEffect.applyTo(".effect-group-container", {
+FluentRevealEffect.applyTo(".effect-group-container", {
 	clickEffect: true,
 	lightColor: "rgba(255,255,255,0.6)",
 	gradientSize: 80,
