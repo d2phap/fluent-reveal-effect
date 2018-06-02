@@ -222,8 +222,15 @@ function applyEffect(selector, options = {}) {
 					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left
 					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top
 
-					Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+					if (Helpers.isIntersected(childrenBorder[i], e.clientX, e.clientY, _options.gradientSize)) {
+						Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+					}
+					else {
+						clearEffect(childrenBorder[i])
+					}
+
 				}
+
 			})
 
 			//clear border light effect
@@ -291,48 +298,78 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
-
 function getOffset(element) {
 	return {
 		top: element.el.offsetTop,
 		left: element.el.offsetLeft
-	}
+	};
 }
 
-
-
-function drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
-	let lightBg
+function drawEffect(
+	element,
+	x,
+	y,
+	lightColor,
+	gradientSize,
+	cssLightEffect = null
+) {
+	let lightBg;
 
 	if (cssLightEffect === null) {
-		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
-	}
-	else {
-		lightBg = cssLightEffect
+		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`;
+	} else {
+		lightBg = cssLightEffect;
 	}
 
-	element.el.style.backgroundImage = lightBg
+	element.el.style.backgroundImage = lightBg;
 }
 
-
-
 function preProcessElements(elements) {
-	let res = []
+	let res = [];
 
 	elements.forEach(el => {
 		res.push({
 			oriBg: getComputedStyle(el)["background-image"],
 			el: el
-		})
-	})
+		});
+	});
 
-	return res
+	return res;
+}
+
+function isIntersected(element, cursor_x, cursor_y, gradientSize) {
+	let cursor_area = {
+		left: cursor_x - gradientSize,
+		right: cursor_x + gradientSize,
+		top: cursor_y - gradientSize,
+		bottom: cursor_y + gradientSize
+	}
+
+	let el_area = {
+		left: element.el.getBoundingClientRect().left,
+		right: element.el.getBoundingClientRect().right,
+		top: element.el.getBoundingClientRect().top,
+		bottom: element.el.getBoundingClientRect().bottom
+	}
+
+	function intersectRect(r1, r2) {
+		return !(
+			r2.left > r1.right ||
+			r2.right < r1.left ||
+			r2.top > r1.bottom ||
+			r2.bottom < r1.top
+		)
+	}
+	
+
+	let result = intersectRect(cursor_area, el_area)
+
+	return result
 }
 
 
+module.exports = { preProcessElements, getOffset, drawEffect, isIntersected };
 
-module.exports = { preProcessElements, getOffset, drawEffect }
 
 /***/ }),
 /* 4 */

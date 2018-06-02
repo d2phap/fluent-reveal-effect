@@ -135,8 +135,15 @@ function applyEffect(selector, options = {}) {
 					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left
 					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top
 
-					Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+					if (Helpers.isIntersected(childrenBorder[i], e.clientX, e.clientY, _options.gradientSize)) {
+						Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+					}
+					else {
+						clearEffect(childrenBorder[i])
+					}
+
 				}
+
 			})
 
 			//clear border light effect
