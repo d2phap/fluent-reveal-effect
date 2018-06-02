@@ -1,14 +1,14 @@
 var webpack = require("webpack")
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-const extractSass = new ExtractTextPlugin("../Dist/css/fluent-ui.css", {
+const extractSass = new ExtractTextPlugin("../Dist/css/fluent-reveal-effect.css", {
 	allChunks: true
 });
 
 module.exports = {
 	entry: "./lib/js/main.js",
 	output: {
-		filename: "../Dist/js/[name].js",
+		filename: "../Dist/js/fluent-reveal-effect.js",
 	},
 	module: {
 		rules: [

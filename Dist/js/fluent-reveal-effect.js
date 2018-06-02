@@ -72,7 +72,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__scss_main_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__scss_main_scss__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_modules_reveal__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_modules_reveal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__js_modules_reveal__);
 
 
 
@@ -87,8 +86,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 /*
 Reveal Effect
 https://github.com/d2phap/fluent-ui
@@ -115,154 +115,191 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-class RevealEffect {
 
-	static info() {
-		return {
-			"version": "0.2",
-			"author": "Duong Dieu Phap",
-			"url": "https://github.com/d2phap/fluent-ui"
-		}
-	}
+class FluentRevealEffect {
+
 
 	static applyTo(selector, options = {}) {
 
-		let is_pressed = false;
+		let is_pressed = false
 
 		let _options = {
-			original_bg: $(selector).css("background-image"),
-			light_color: "rgba(255,255,255,0.25)",
-			gradient_size: $(selector).outerWidth(),
-			click_effect: false,
-			is_container: false,
+			lightColor: "rgba(255,255,255,0.25)",
+			gradientSize: 150,
+			clickEffect: false,
+			isContainer: false,
 			children: {
-				border: ".btn-border",
-				el: ".btn"
+				borderSelector: ".btn-border",
+				elementSelector: ".btn",
+				lightColor: "rgba(255,255,255,0.25)",
+				gradientSize: 150
 			}
 		}
 
 		// update options
 		_options = Object.assign(_options, options)
+		let els = preProcessElements(document.querySelectorAll(selector))
+		
+		
 
 
-		function drawEffect($element, x, y, css_light_effect = null) {
-
-			let bg_light;
-
-			if (css_light_effect === null) {
-
-				bg_light = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0))`
-			}
-			else {
-				bg_light = css_light_effect
-			}
-	
-			$element.css({ "background-image": bg_light })
+		function clearEffect(element) {
+			element.el.style.backgroundImage = element.oriBg
 		}
 
 
-		function clearEffect($element) {
-			$element.css({ "background-image": _options.original_bg })
-		}
-
-
-		function enableBackgroundEffects($element) {
+		function enableBackgroundEffects(element, lightColor, gradientSize) {
+			
 			//element background effect --------------------
-			$element.mousemove(function (e) {
-				let x = e.pageX - $(this).offset().left
-				let y = e.pageY - $(this).offset().top
+			element.el.addEventListener("mousemove", (e) => {
+				let x = e.pageX - getOffset(element).left
+				let y = e.pageY - getOffset(element).top
 
-				if (_options.click_effect && is_pressed) {
+				if (_options.clickEffect && is_pressed) {
 
-					let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
+					let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
 
-					drawEffect($(this), x, y, css_light_effect)
+					drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
 				}
 				else {
-					drawEffect($(this), x, y)
+					drawEffect(element, x, y, lightColor, gradientSize)
+				}	
+			})
+
+
+			element.el.addEventListener("mouseleave", (e) => {
+				clearEffect(element)
+			})
+		}
+
+
+
+		function enableClickEffects(element, lightColor, gradientSize) {
+			element.el.addEventListener("mousedown", (e) => {
+				is_pressed = true
+				let x = e.pageX - getOffset(element).left
+				let y = e.pageY - getOffset(element).top
+		
+				let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
+		
+				drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
+			})
+		
+			element.el.addEventListener("mouseup", (e) => {
+				is_pressed = false
+				let x = e.pageX - getOffset(element).left
+				let y = e.pageY - getOffset(element).top
+		
+				drawEffect(element, x, y, lightColor, gradientSize)
+			})
+		}
+
+
+
+
+		//Children *********************************************
+		if (!_options.isContainer) {
+
+			//element background effect
+			els.forEach(element => {
+				enableBackgroundEffects(element, _options.lightColor, _options.gradientSize)
+
+				//element click effect
+				if (_options.clickEffect) {
+					enableClickEffects(element, _options.lightColor, _options.gradientSize)
 				}
 			})
-
-
-			$element.mouseleave(function () {
-				clearEffect($(this))
-			})
-		}
-
-
-		function enableClickEffects($element) {
-			$element.mousedown(function(e) {
-				is_pressed = true;
-	
-				let x = e.pageX - $(this).offset().left
-				let y = e.pageY - $(this).offset().top
-	
-				let css_light_effect = `radial-gradient(circle ${_options.gradient_size}px at ${x}px ${y}px, ${_options.light_color}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${_options.light_color}, rgba(255,255,255,0), rgba(255,255,255,0))`
-	
-				drawEffect($(this), x, y, css_light_effect)
-			});
-	
-			$element.mouseup(function(e) {
-				is_pressed = false
-				let x = e.pageX - $(this).offset().left
-				let y = e.pageY - $(this).offset().top
-
-				drawEffect($(this), x, y)
-			});
-		}
-
-
-
-		// element background effect
-		if (!_options.is_container) {
-
-			//element background effect --------------------
-			enableBackgroundEffects($(selector))
-
-			//element click effect --------------------
-			if (_options.click_effect) {
-				enableClickEffects($(selector))
-			}
 			
 		}
-		//container effects
+		//Container *********************************************
 		else {
 
-			//border effect ----------------------------
-			$(selector).mousemove(function (e) {
+			els.forEach(element => {
 
-				let items = $(_options.children.border).toArray()
+				// get border items list
+				let childrenBorder = _options.isContainer ? preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
 
-				for (let i = 0; i < items.length; i++) {
-					let x = e.pageX - $(items[i]).offset().left
-					let y = e.pageY - $(items[i]).offset().top
+				
+				//Container *********************************************
+				//add border effect
+				element.el.addEventListener("mousemove", (e) => {
+					for (let i = 0; i < childrenBorder.length; i++) {
+						let x = e.pageX - getOffset(childrenBorder[i]).left
+						let y = e.pageY - getOffset(childrenBorder[i]).top
 
-					drawEffect($(items[i]), x, y)
+						drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
+					}
+				})
+
+				//clear border light effect
+				element.el.addEventListener("mouseleave", (e) => {
+					for (let i = 0; i < childrenBorder.length; i++) {
+						clearEffect(childrenBorder[i])
+					}					
+				})
+
+
+				//Children *********************************************
+				let children = preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
+				// console.log(children)
+
+				for (let i = 0; i < children.length; i++) {
+
+					//element background effect
+					enableBackgroundEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
+
+					//element click effect
+					if (_options.clickEffect) {
+						enableClickEffects(children[i], _options.children.lightColor, _options.children.gradientSize)
+					}
 				}
+
 			})
-
-			$(selector).mouseleave(function (e) {
-				clearEffect($(_options.children.border))
-			})
-
-
-			//element background effect --------------------
-			enableBackgroundEffects($(selector).find(_options.children.el))
-
-			//element click effect --------------------
-			if (_options.click_effect) {
-				enableClickEffects($(selector).find(_options.children.el))
-			}
 
 		}
-
-		
 	}
+}
+/* unused harmony export default */
 
 
+
+
+function getOffset(element) {
+	return {
+		top: element.el.offsetTop,
+		left: element.el.offsetLeft
+	}
 }
 
 
+
+function drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect = null) {
+	let lightBg
+
+	if (cssLightEffect === null) {
+		lightBg = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0))`
+	}
+	else {
+		lightBg = cssLightEffect
+	}
+
+	element.el.style.backgroundImage = lightBg
+}
+
+
+
+function preProcessElements(elements) {
+	let res = []
+
+	elements.forEach(el => {
+		res.push({
+			oriBg: getComputedStyle(el)["background-image"],
+			el: el
+		})
+	})
+
+	return res
+}
 
 
 
