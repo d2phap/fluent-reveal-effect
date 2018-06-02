@@ -25,7 +25,7 @@ SOFTWARE.
 */
 
 
-class RevealEffect {
+export default class RevealEffect {
 
 
 	static applyTo(selector, options = {}) {
