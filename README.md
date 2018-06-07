@@ -2,6 +2,7 @@
 Apply reveal effect to border and background of elements.
 
 ![Screenshot](https://github.com/d2phap/fluent-ui/raw/master/docs/screenshot.png)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect?ref=badge_shield)
 
 ### Demo
 https://d2phap.github.io/fluent-reveal-effect/
@@ -103,3 +104,7 @@ Thanks for your gratitude and finance help!
 <img src="https://img.shields.io/badge/PayPal-Donate%20$10%20-009be1.svg?maxAge=3600" height="30" alt="Buy me a beer?">
 </a>
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect?ref=badge_large)
