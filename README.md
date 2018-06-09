@@ -1,8 +1,10 @@
 # Reveal Effect library (Fluent Design System)
 Apply reveal effect to border and background of elements.
 
-![Screenshot](https://github.com/d2phap/fluent-ui/raw/master/docs/screenshot.png)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect?ref=badge_shield)
+
+![Screenshot](https://github.com/d2phap/fluent-ui/raw/master/docs/screenshot.png)
+
 
 ### Demo
 https://d2phap.github.io/fluent-reveal-effect/
