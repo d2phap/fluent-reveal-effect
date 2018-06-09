@@ -52,6 +52,7 @@ function applyEffect(selector, options = {}) {
 
 
 	function clearEffect(element) {
+		is_pressed = false
 		element.el.style.backgroundImage = element.oriBg
 	}
 
