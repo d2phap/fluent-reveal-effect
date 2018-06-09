@@ -37,8 +37,8 @@ function applyEffect(selector, options = {}) {
 		clickEffect: false,
 		isContainer: false,
 		children: {
-			borderSelector: ".btn-border",
-			elementSelector: ".btn",
+			borderSelector: ".eff-reveal-border",
+			elementSelector: ".eff-reveal",
 			lightColor: "rgba(255,255,255,0.25)",
 			gradientSize: 150
 		}
@@ -60,8 +60,8 @@ function applyEffect(selector, options = {}) {
 		
 		//element background effect --------------------
 		element.el.addEventListener("mousemove", (e) => {
-			let x = e.pageX - Helpers.getOffset(element).left
-			let y = e.pageY - Helpers.getOffset(element).top
+			let x = e.pageX - Helpers.getOffset(element).left - window.scrollX
+			let y = e.pageY - Helpers.getOffset(element).top - window.scrollY
 
 			if (_options.clickEffect && is_pressed) {
 
@@ -85,8 +85,8 @@ function applyEffect(selector, options = {}) {
 	function enableClickEffects(element, lightColor, gradientSize) {
 		element.el.addEventListener("mousedown", (e) => {
 			is_pressed = true
-			let x = e.pageX - Helpers.getOffset(element).left
-			let y = e.pageY - Helpers.getOffset(element).top
+			let x = e.pageX - Helpers.getOffset(element).left - window.scrollX
+			let y = e.pageY - Helpers.getOffset(element).top - window.scrollY
 	
 			let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
 	
@@ -95,8 +95,8 @@ function applyEffect(selector, options = {}) {
 	
 		element.el.addEventListener("mouseup", (e) => {
 			is_pressed = false
-			let x = e.pageX - Helpers.getOffset(element).left
-			let y = e.pageY - Helpers.getOffset(element).top
+			let x = e.pageX - Helpers.getOffset(element).left - window.scrollX
+			let y = e.pageY - Helpers.getOffset(element).top - window.scrollY
 	
 			Helpers.drawEffect(element, x, y, lightColor, gradientSize)
 		})
@@ -132,8 +132,8 @@ function applyEffect(selector, options = {}) {
 			//add border effect
 			element.el.addEventListener("mousemove", (e) => {
 				for (let i = 0; i < childrenBorder.length; i++) {
-					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left
-					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top
+					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left - window.scrollX
+					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top - window.scrollY
 
 					if (Helpers.isIntersected(childrenBorder[i], e.clientX, e.clientY, _options.gradientSize)) {
 						Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)

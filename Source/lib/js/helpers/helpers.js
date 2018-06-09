@@ -26,8 +26,8 @@ SOFTWARE.
 
 function getOffset(element) {
 	return {
-		top: element.el.offsetTop,
-		left: element.el.offsetLeft
+		top: element.el.getBoundingClientRect().top,
+		left: element.el.getBoundingClientRect().left
 	};
 }
 
