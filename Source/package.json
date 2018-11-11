@@ -1,6 +1,6 @@
 {
 	"name": "fluent-reveal-effect",
-	"version": "0.10.2",
+	"version": "1.0.0",
 	"description": "Reveal Effect (Fluent Design)",
 	"main": "../Dist/js/[name].js",
 	"scripts": {
@@ -35,13 +35,7 @@
 	"devDependencies": {
 		"babel-cli": "^6.26.0",
 		"babel-preset-env": "^1.7.0",
-		"extract-text-webpack-plugin": "^3.0.2",
-		"node-sass": "^4.7.2",
-		"sass-loader": "^6.0.6",
 		"webpack": "^3.10.0"
 	},
-	"dependencies": {
-		"css-loader": "^0.28.9",
-		"style-loader": "^0.20.1"
-	}
+	"dependencies": {}
 }

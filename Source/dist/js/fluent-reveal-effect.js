@@ -67,8 +67,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(1);
 
 
 /***/ }),
@@ -139,6 +138,7 @@ function applyEffect(selector, options = {}) {
 
 
 	function clearEffect(element) {
+		is_pressed = false
 		element.el.style.backgroundImage = element.oriBg
 	}
 
@@ -370,12 +370,6 @@ function isIntersected(element, cursor_x, cursor_y, gradientSize) {
 
 module.exports = { preProcessElements, getOffset, drawEffect, isIntersected };
 
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
