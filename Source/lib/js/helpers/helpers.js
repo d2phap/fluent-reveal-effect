@@ -51,7 +51,7 @@ function drawEffect(
 }
 
 function preProcessElements(elements) {
-	let res = [];
+	const res = [];
 
 	elements.forEach(el => {
 		res.push({
@@ -64,14 +64,14 @@ function preProcessElements(elements) {
 }
 
 function isIntersected(element, cursor_x, cursor_y, gradientSize) {
-	let cursor_area = {
+	const cursor_area = {
 		left: cursor_x - gradientSize,
 		right: cursor_x + gradientSize,
 		top: cursor_y - gradientSize,
 		bottom: cursor_y + gradientSize
 	}
 
-	let el_area = {
+	const el_area = {
 		left: element.el.getBoundingClientRect().left,
 		right: element.el.getBoundingClientRect().right,
 		top: element.el.getBoundingClientRect().top,
@@ -88,7 +88,7 @@ function isIntersected(element, cursor_x, cursor_y, gradientSize) {
 	}
 	
 
-	let result = intersectRect(cursor_area, el_area)
+	const result = intersectRect(cursor_area, el_area)
 
 	return result
 }
