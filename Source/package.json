@@ -1,6 +1,6 @@
 {
 	"name": "fluent-reveal-effect",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Reveal Effect (Fluent Design)",
 	"main": "../Dist/js/[name].js",
 	"scripts": {
