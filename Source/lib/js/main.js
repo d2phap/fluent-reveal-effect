@@ -46,7 +46,7 @@ function applyEffect(selector, options = {}) {
 
 	// update options
 	_options = Object.assign(_options, options)
-	let els =  Helpers.preProcessElements(document.querySelectorAll(selector))
+	const els =  Helpers.preProcessElements(document.querySelectorAll(selector))
 	
 	
 
@@ -86,18 +86,18 @@ function applyEffect(selector, options = {}) {
 	function enableClickEffects(element, lightColor, gradientSize) {
 		element.el.addEventListener("mousedown", (e) => {
 			is_pressed = true
-			let x = e.pageX - Helpers.getOffset(element).left - window.scrollX
-			let y = e.pageY - Helpers.getOffset(element).top - window.scrollY
+			const x = e.pageX - Helpers.getOffset(element).left - window.scrollX
+			const y = e.pageY - Helpers.getOffset(element).top - window.scrollY
 	
-			let cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
+			const cssLightEffect = `radial-gradient(circle ${gradientSize}px at ${x}px ${y}px, ${lightColor}, rgba(255,255,255,0)), radial-gradient(circle ${70}px at ${x}px ${y}px, rgba(255,255,255,0), ${lightColor}, rgba(255,255,255,0), rgba(255,255,255,0))`
 	
 			Helpers.drawEffect(element, x, y, lightColor, gradientSize, cssLightEffect)
 		})
 	
 		element.el.addEventListener("mouseup", (e) => {
 			is_pressed = false
-			let x = e.pageX - Helpers.getOffset(element).left - window.scrollX
-			let y = e.pageY - Helpers.getOffset(element).top - window.scrollY
+			const x = e.pageX - Helpers.getOffset(element).left - window.scrollX
+			const y = e.pageY - Helpers.getOffset(element).top - window.scrollY
 	
 			Helpers.drawEffect(element, x, y, lightColor, gradientSize)
 		})
@@ -126,15 +126,15 @@ function applyEffect(selector, options = {}) {
 		els.forEach(element => {
 
 			// get border items list
-			let childrenBorder = _options.isContainer ? Helpers.preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
+			const childrenBorder = _options.isContainer ? Helpers.preProcessElements(document.querySelectorAll(_options.children.borderSelector)) : []
 
 			
 			//Container *********************************************
 			//add border effect
 			element.el.addEventListener("mousemove", (e) => {
 				for (let i = 0; i < childrenBorder.length; i++) {
-					let x = e.pageX - Helpers.getOffset(childrenBorder[i]).left - window.scrollX
-					let y = e.pageY - Helpers.getOffset(childrenBorder[i]).top - window.scrollY
+					const x = e.pageX - Helpers.getOffset(childrenBorder[i]).left - window.scrollX
+					const y = e.pageY - Helpers.getOffset(childrenBorder[i]).top - window.scrollY
 
 					if (Helpers.isIntersected(childrenBorder[i], e.clientX, e.clientY, _options.gradientSize)) {
 						Helpers.drawEffect(childrenBorder[i], x, y, _options.lightColor, _options.gradientSize)
@@ -156,7 +156,7 @@ function applyEffect(selector, options = {}) {
 
 
 			//Children *********************************************
-			let children =  Helpers.preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
+			const children =  Helpers.preProcessElements(element.el.querySelectorAll(_options.children.elementSelector))
 			// console.log(children)
 
 			for (let i = 0; i < children.length; i++) {
