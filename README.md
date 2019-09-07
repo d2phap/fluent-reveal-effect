@@ -7,14 +7,16 @@ Apply reveal effect to border and background of elements.
 
 
 ### Demo
-https://imageglass.org/
-https://d2phap.github.io/fluent-reveal-effect/
+- https://imageglass.org/
+- https://d2phap.github.io/fluent-reveal-effect/
 
 ## Install
 Run the command
 ```
 npm i fluent-reveal-effect@latest
 ```
+
+NPM package: https://www.npmjs.com/package/fluent-reveal-effect
 
 ## Usage
 
