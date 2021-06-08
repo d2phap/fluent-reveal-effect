@@ -1,10 +1,10 @@
-// Global
+// ** Global *******************************************************************
 export interface resourceI {
     oriBg: string;
     el: HTMLElement;
 }
 
-// Mouse
+// ** Mouse ********************************************************************
 export type is_pressedI = [boolean]; // For reference variable
 
 export interface AreaI {
@@ -14,7 +14,7 @@ export interface AreaI {
     bottom: number;
 }
 
-// Effect
+// ** Effect *******************************************************************
 export interface effectOptionsI {
     lightColor:   string;
     gradientSize: number;

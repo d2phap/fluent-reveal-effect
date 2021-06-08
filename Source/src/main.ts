@@ -5,8 +5,7 @@ import { preProcessElement, preProcessElements, preProcessSelector,
          enableNormalClickEffects,      enableChildrenClickEffects,
          enableBorderEffects } from "./helpers";
 
-// ** ApplyEffect **************************************************************
-// Option
+// ** Option *******************************************************************
 function applyEffectOption(userOptions: userEffectOptionsI): effectOptionsI {
     const defaultOptions: effectOptionsI = {
         lightColor: "rgba(255,255,255,0.25)",
@@ -24,7 +23,7 @@ function applyEffectOption(userOptions: userEffectOptionsI): effectOptionsI {
     return Object.assign(defaultOptions, userOptions);
 }
 
-// Children Effect
+// ** Children Effect **********************************************************
 function applyChildrenElementEffect(
     resource: resourceI, options: effectOptionsI, is_pressed: is_pressedI,
     enableBackgroundEffectsFunc: enableEffectFuncI, enableClickEffectsFunc: enableEffectFuncI
@@ -35,6 +34,7 @@ function applyChildrenElementEffect(
         enableClickEffectsFunc(resource, options, is_pressed);
     }
 }
+
 function applyChildrenEffect(
     resources: resourceI[], options: effectOptionsI, is_pressed: is_pressedI,
     enableBackgroundEffectsFunc: enableEffectFuncI, enableClickEffectsFunc: enableEffectFuncI
@@ -47,7 +47,7 @@ function applyChildrenEffect(
     }
 }
 
-// Container Effect
+// ** Container Effect *********************************************************
 function applyContainerElementEffect(
     resource: resourceI, options: effectOptionsI, is_pressed: is_pressedI,
     enableBackgroundEffectsFunc: enableEffectFuncI, enableClickEffectsFunc: enableEffectFuncI
@@ -60,6 +60,7 @@ function applyContainerElementEffect(
     const childrens = preProcessSelector(options.children.elementSelector);
     applyChildrenEffect(childrens, options, is_pressed, enableBackgroundEffectsFunc, enableClickEffectsFunc);
 }
+
 function applyContainerEffect(
     resources: resourceI[], options: effectOptionsI, is_pressed: is_pressedI,
     enableBackgroundEffectsFunc: enableEffectFuncI, enableClickEffectsFunc: enableEffectFuncI
@@ -72,7 +73,7 @@ function applyContainerEffect(
     }
 }
 
-// Apply Effect
+// ** Apply Effect *************************************************************
 export function applyElementEffect(element: HTMLElement, userOptions: userEffectOptionsI = {}) {
     const is_pressed: is_pressedI = [false];
     const options  = applyEffectOption(userOptions);
