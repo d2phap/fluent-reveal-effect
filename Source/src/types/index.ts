@@ -16,15 +16,15 @@ export interface IArea {
 
 // ** Effect *******************************************************************
 export interface IEffectOptions {
-  lightColor: string;
-  gradientSize: number;
-  clickEffect: boolean;
-  isContainer: boolean;
-  children: {
-    borderSelector: string,
-    elementSelector: string,
-    lightColor: string,
-    gradientSize: number
+  lightColor?: string | 'rgba(255,255,255,0.1)';
+  gradientSize?: number | 200;
+  clickEffect?: boolean | false;
+  isContainer?: boolean | false;
+  children?: {
+    borderSelector?: string | '.eff-reveal-border';
+    elementSelector?: string | '.eff-reveal';
+    lightColor?: string | 'rgba(255,255,255,0.1)';
+    gradientSize?: number | 200;
   };
 }
 export type IUserEffectOptions = Partial<IEffectOptions>;
