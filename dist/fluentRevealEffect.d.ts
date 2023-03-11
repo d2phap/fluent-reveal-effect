@@ -1,4 +1,4 @@
 import { IUserEffectOptions } from './types';
-export declare function applyElementEffect(element: HTMLElement, userOptions?: IUserEffectOptions): void;
-export declare function applyElementsEffect(elements: NodeListOf<HTMLElement>, userOptions?: IUserEffectOptions): void;
-export declare function applyEffect(selector: string, userOptions?: IUserEffectOptions): void;
+export declare const applyElementEffect: (element: HTMLElement, userOptions?: IUserEffectOptions) => void;
+export declare const applyElementsEffect: (elements: NodeListOf<HTMLElement>, userOptions?: IUserEffectOptions) => void;
+export declare const applyEffect: (selector: string, userOptions?: IUserEffectOptions) => void;

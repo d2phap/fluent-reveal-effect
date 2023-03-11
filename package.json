@@ -1,7 +1,7 @@
 {
   "name": "fluent-reveal-effect",
   "displayName": "Fluent Reveal Effect",
-  "version": "3.0.5",
+  "version": "3.0.9",
 	"description": "Reveal Effect (Fluent Design)",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",

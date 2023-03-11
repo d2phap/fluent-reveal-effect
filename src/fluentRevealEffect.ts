@@ -97,7 +97,7 @@ function applyContainerEffect(
 }
 
 // ** Apply Effect *************************************************************
-export function applyElementEffect(element: HTMLElement, userOptions: IUserEffectOptions = {}) {
+export const applyElementEffect = (element: HTMLElement, userOptions: IUserEffectOptions = {}) => {
   const isPressed: IIsPressed = [false];
   const options = applyEffectOption(userOptions);
   const resource = preProcessElement(element);
@@ -112,9 +112,9 @@ export function applyElementEffect(element: HTMLElement, userOptions: IUserEffec
     const enableClickEffectsFunc = enableChildrenClickEffects;
     applyContainerElementEffect(resource, options, isPressed, enableBackgroundEffectsFunc, enableClickEffectsFunc);
   }
-}
+};
 
-export function applyElementsEffect(elements: NodeListOf<HTMLElement>, userOptions: IUserEffectOptions = {}) {
+export const applyElementsEffect = (elements: NodeListOf<HTMLElement>, userOptions: IUserEffectOptions = {}) => {
   const isPressed: IIsPressed = [false];
   const options = applyEffectOption(userOptions);
   const resources = preProcessElements(elements);
@@ -129,9 +129,9 @@ export function applyElementsEffect(elements: NodeListOf<HTMLElement>, userOptio
     const enableClickEffectsFunc = enableChildrenClickEffects;
     applyContainerEffect(resources, options, isPressed, enableBackgroundEffectsFunc, enableClickEffectsFunc);
   }
-}
+};
 
-export function applyEffect(selector: string, userOptions: IUserEffectOptions = {}) {
+export const applyEffect = (selector: string, userOptions: IUserEffectOptions = {}) => {
   const isPressed: IIsPressed = [false];
   const options = applyEffectOption(userOptions);
   const resoures = preProcessSelector(selector);
@@ -146,4 +146,4 @@ export function applyEffect(selector: string, userOptions: IUserEffectOptions = 
     const enableClickEffectsFunc = enableChildrenClickEffects;
     applyContainerEffect(resoures, options, isPressed, enableBackgroundEffectsFunc, enableClickEffectsFunc);
   }
-}
+};
