@@ -5,7 +5,7 @@ export interface IResource {
 }
 
 // ** Mouse ********************************************************************
-export type IIs_Pressed = [boolean]; // For reference variable
+export type IIsPressed = [boolean]; // For reference variable
 
 export interface IArea {
   left: number;
@@ -32,12 +32,6 @@ export type IUserEffectOptions = Partial<IEffectOptions>;
 export interface IEnableEffectFunc {
   (element: IResource,
     options: IEffectOptions,
-    is_pressed: IIs_Pressed): void
+    is_pressed: IIsPressed): void
 }
 
-
-export interface FluentRevealEffect {
-  applyEffect: (element: string, options: IEffectOptions) => void;
-  applyElementEffect: (element: HTMLElement, userOptions: IUserEffectOptions) => void;
-  applyElementsEffect: (elements: NodeListOf<HTMLElement>, userOptions: IUserEffectOptions) => void;
-}
