@@ -57,11 +57,11 @@ function applyContainerElementEffect(
   enableBackgroundEffectsFunc: IEnableEffectFunc, enableClickEffectsFunc: IEnableEffectFunc
 ) {
   // Container
-  const childrenBorders = preProcessSelector(options.children.borderSelector);
+  const childrenBorders = preProcessSelector(options.children?.borderSelector || '');
   enableBorderEffects(resource, childrenBorders, options, is_pressed);
 
   // Children
-  const childrens = preProcessSelector(options.children.elementSelector);
+  const childrens = preProcessSelector(options.children?.elementSelector || '');
   applyChildrenEffect(childrens, options, is_pressed, enableBackgroundEffectsFunc, enableClickEffectsFunc);
 }
 

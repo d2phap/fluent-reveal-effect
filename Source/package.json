@@ -1,8 +1,12 @@
 {
 	"name": "fluent-reveal-effect",
-	"version": "3.0.0",
+	"version": "3.0.3",
 	"description": "Reveal Effect (Fluent Design)",
-	"main": "../Dist/js/[name].js",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+    "dist"
+  ],
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "webpack --mode=production"

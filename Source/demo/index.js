@@ -1,4 +1,4 @@
-import FluentRevealEffect from "../dist/js/fluent-reveal-effect";
+import FluentRevealEffect from "../dist";
 
 // console.log(FluentRevealEffect)
 

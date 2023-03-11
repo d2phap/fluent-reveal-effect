@@ -6,4 +6,4 @@ const FluentRevealEffect = {
   applyElementsEffect
 };
 
-module.exports = { FluentRevealEffect };
+module.exports = FluentRevealEffect;

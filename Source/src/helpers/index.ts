@@ -158,13 +158,13 @@ export function enableNormalBackgroundEffetcs(resource: IResource, options: IEff
   enableBackgroundEffects(resource, options.lightColor, options.gradientSize, options.clickEffect, is_pressed);
 }
 export function enableChildrenBackgroundEffetcs(resource: IResource, options: IEffectOptions, is_pressed: IIs_Pressed) {
-  enableBackgroundEffects(resource, options.children.lightColor, options.children.gradientSize, options.clickEffect, is_pressed);
+  enableBackgroundEffects(resource, options.children?.lightColor || '', options.children?.gradientSize || 100, options.clickEffect, is_pressed);
 }
 export function enableNormalClickEffects(resource: IResource, options: IEffectOptions, is_pressed: IIs_Pressed) {
   enableClickEffects(resource, options.lightColor, options.gradientSize, is_pressed);
 }
 export function enableChildrenClickEffects(resource: IResource, options: IEffectOptions, is_pressed: IIs_Pressed) {
-  enableClickEffects(resource, options.children.lightColor, options.children.gradientSize, is_pressed);
+  enableClickEffects(resource, options.children?.lightColor || '', options.children?.gradientSize || 100, is_pressed);
 }
 
 // ** Element Processing *******************************************************

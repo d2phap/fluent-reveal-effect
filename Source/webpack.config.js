@@ -5,7 +5,13 @@ module.exports = [
     name: "library",
     entry: path.join(__dirname, "src", "index.ts"),
     output: {
-      filename: "./js/fluent-reveal-effect.js"
+      filename: "./index.js",
+      library: {
+        name: 'Fluent reveal effect',
+        type: 'umd',
+        umdNamedDefine: true,
+      },
+      globalObject: 'this',
     },
     resolve: {
       extensions: ['.ts', '.js'],
@@ -24,7 +30,7 @@ module.exports = [
     name: "demo",
     entry: ["./demo/index.js"],
     output: {
-      filename: "./demo/main.js"
+      filename: "../demo/main.js"
     },
     module: {}
   }
