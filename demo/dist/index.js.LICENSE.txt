@@ -1,0 +1,9 @@
+/*! 
+  Fluent Reveal Effect v3.0.9
+  ----------------------------------------
+  Copyright (c) 2023 Duong Dieu Phap.
+  Homepage: https://github.com/d2phap/fluent-reveal-effect#readme
+  Released under the MIT License.
+
+  License information can be found in LICENSE.txt.
+ */

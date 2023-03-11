@@ -22,7 +22,7 @@ NPM package: https://www.npmjs.com/package/fluent-reveal-effect
 
 ### Import the library
 ```js
-import effects from "fluent-reveal-effect"
+import { applyEffect } from "fluent-reveal-effect"
 ```
 
 
@@ -55,15 +55,15 @@ import effects from "fluent-reveal-effect"
 ```
 #### JavaScript
 ```js
-effects.applyEffect(".btn", {
-  lightColor: "rgba(255,255,255,0.1)",
+applyEffect('.btn', {
+  lightColor: 'rgba(255,255,255,0.1)',
   gradientSize: 150,
 });
 ```
 
 #### Enable Ripple click effect
 ````js
-effects.applyEffect(".btn", {
+applyEffect('.btn', {
   clickEffect: true,
 });
 ````
@@ -86,15 +86,15 @@ effects.applyEffect(".btn", {
 
 #### JavaScript
 ```js
-effects.applyEffect(".effect-group-container", {
+applyEffect('.effect-group-container', {
   clickEffect: true,
-  lightColor: "rgba(255,255,255,0.6)",
+  lightColor: 'rgba(255,255,255,0.6)',
   gradientSize: 80,
   isContainer: true,
   children: {
-    borderSelector: ".btn-border",
-    elementSelector: ".btn",
-    lightColor: "rgba(255,255,255,0.3)",
+    borderSelector: '.btn-border',
+    elementSelector: '.btn',
+    lightColor: 'rgba(255,255,255,0.3)',
     gradientSize: 150
   }
 })
