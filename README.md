@@ -29,21 +29,21 @@ import { FluentRevealEffect } from "fluent-reveal-effect"
 ### Basic CSS
 ```css
 .btn {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-	padding: 1rem 2rem;
-	background-color: #333;
-	color: #fff;
-	border: 0;
-	
-	transition: all 200ms ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  padding: 1rem 2rem;
+  background-color: #333;
+  color: #fff;
+  border: 0;
+
+  transition: all 200ms ease;
 }
 .btn-border {
-	display: inline-block;
-	margin: 5px;
+  display: inline-block;
+  margin: 5px;
 }
 .btn-border .btn {
-	display: block;
-	margin: 2px;
+  display: block;
+  margin: 2px;
 }
 ```
 
@@ -56,47 +56,47 @@ import { FluentRevealEffect } from "fluent-reveal-effect"
 #### JavaScript
 ```js
 FluentRevealEffect.applyEffect(".btn", {
-	lightColor: "rgba(255,255,255,0.1)",
-	gradientSize: 150
-})
+  lightColor: "rgba(255,255,255,0.1)",
+  gradientSize: 150,
+});
 ```
 
 #### Enable Ripple click effect
 ````js
 FluentRevealEffect.applyEffect(".btn", {
-	clickEffect: true
-})
+  clickEffect: true,
+});
 ````
 
 ### Apply border and background effect
 #### HTML mockup
 ```html
 <div class="effect-group-container">
-    <div class="btn-border">
-        <button class="btn">Button 2</button>
-    </div>
-    <div class="btn-border">
-        <button class="btn">Button 3</button>
-    </div>
-    <div class="btn-border">
-        <button class="btn">Button 4</button>
-    </div>
+  <div class="btn-border">
+    <button class="btn">Button 2</button>
+  </div>
+  <div class="btn-border">
+    <button class="btn">Button 3</button>
+  </div>
+  <div class="btn-border">
+    <button class="btn">Button 4</button>
+  </div>
 </div>
 ```
 
 #### JavaScript
 ```js
 FluentRevealEffect.applyEffect(".effect-group-container", {
-	clickEffect: true,
-	lightColor: "rgba(255,255,255,0.6)",
-	gradientSize: 80,
-	isContainer: true,
-	children: {
-		borderSelector: ".btn-border",
-		elementSelector: ".btn",
-		lightColor: "rgba(255,255,255,0.3)",
-		gradientSize: 150
-	}
+  clickEffect: true,
+  lightColor: "rgba(255,255,255,0.6)",
+  gradientSize: 80,
+  isContainer: true,
+  children: {
+    borderSelector: ".btn-border",
+    elementSelector: ".btn",
+    lightColor: "rgba(255,255,255,0.3)",
+    gradientSize: 150
+  }
 })
 ```
 
