@@ -8,4 +8,4 @@ community_bridge: # Replace with a single Community Bridge project-name e.g., cl
 liberapay: # Replace with a single Liberapay username
 issuehunt: # Replace with a single IssueHunt username
 otechie: # Replace with a single Otechie username
-custom: ["https://donorbox.org/imageglass", "https://www.paypal.me/d2phap"]
+custom: ["https://donate.stripe.com/6oE15Kab3740du828a", "https://www.paypal.me/d2phap"]
