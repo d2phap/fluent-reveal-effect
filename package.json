@@ -1,18 +1,14 @@
 {
   "name": "fluent-reveal-effect",
   "displayName": "Fluent Reveal Effect",
-  "version": "3.0.11",
+  "version": "3.1.0",
 	"description": "Reveal Effect (Fluent Design)",
-  "main": "dist/main.js",
-  "types": "dist/main.d.ts",
+  "type": "module",
+  "module": "./dist/fluent-reveal-effect.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
-  "scripts": {
-    "start": "webpack --watch --config ./webpack.config.js --progress --mode=development",
-    "build": "webpack --config ./webpack.config.js --progress --mode=production",
-    "test": ""
-  },
   "keywords": [
 		"fluent",
 		"design",
@@ -34,24 +30,13 @@
 		"url": "https://github.com/d2phap/fluent-reveal-effect/issues"
 	},
 	"homepage": "https://github.com/d2phap/fluent-reveal-effect#readme",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build"
+  },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/preset-env": "^7.20.2",
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
-    "babel-loader": "^9.1.2",
-    "clean-webpack-plugin": "*",
-    "css-loader": "^6.7.3",
-    "eslint": "^8.36.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-webpack-plugin": "^4.0.0",
-    "node-sass": "^8.0.0",
-    "sass-loader": "^13.2.0",
-    "ts-loader": "^9.4.2",
-    "tsconfig-paths-webpack-plugin": "^4.0.1",
-    "typescript": "^4.9.5",
-    "webpack": "^5.76.1",
-    "webpack-cli": "^5.0.1"
+    "typescript": "^5.9.2",
+    "vite": "^7.0.6",
+    "vite-plugin-dts": "^4.5.4"
   }
 }

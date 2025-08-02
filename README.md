@@ -1,7 +1,7 @@
 # Reveal Effect library (Fluent Design System)
 Apply reveal effect to border and background of elements.
 
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fd2phap%2Ffluent-reveal-effect?ref=badge_shield)
+[![NPM Downloads](https://img.shields.io/npm/d18m/fluent-reveal-effect)](https://www.npmjs.com/package/fluent-reveal-effect)
 
 ![Screenshot](https://github.com/d2phap/fluent-ui/raw/master/docs/screenshot.png)
 
@@ -12,21 +12,14 @@ Apply reveal effect to border and background of elements.
 
 ## Install
 Run the command
-```
+```bash
 npm i fluent-reveal-effect@latest
 ```
 
 NPM package: https://www.npmjs.com/package/fluent-reveal-effect
 
 ## Usage
-
-### Import the library
-```js
-import { applyEffect } from "fluent-reveal-effect"
-```
-
-
-### Basic CSS
+### Base CSS
 ```css
 .btn {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
@@ -48,28 +41,29 @@ import { applyEffect } from "fluent-reveal-effect"
 ```
 
 
-### Apply background effect
-#### HTML mockup
+### 1. Apply background effect
+#### HTML
 ```html
 <button class="btn">Button 1</button>
 ```
 #### JavaScript
-```js
+```ts
+import { applyEffect } from "fluent-reveal-effect"
+
+// Enable reveal background effect
 applyEffect('.btn', {
   lightColor: 'rgba(255,255,255,0.1)',
   gradientSize: 150,
 });
-```
 
-#### Enable Ripple click effect
-````js
+// Enable Ripple click effect
 applyEffect('.btn', {
   clickEffect: true,
 });
 ````
 
-### Apply border and background effect
-#### HTML mockup
+### 2. Apply border and background effect
+#### HTML
 ```html
 <div class="effect-group-container">
   <div class="btn-border">
@@ -85,7 +79,9 @@ applyEffect('.btn', {
 ```
 
 #### JavaScript
-```js
+```ts
+import { applyEffect } from "fluent-reveal-effect"
+
 applyEffect('.effect-group-container', {
   clickEffect: true,
   lightColor: 'rgba(255,255,255,0.6)',

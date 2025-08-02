@@ -1,4 +1,10 @@
-import { IResource, IIsPressed, IArea, IEffectOptions } from '../types';
+import {
+  type IResource,
+  type IIsPressed,
+  type IArea,
+  type IEffectOptions,
+} from '../types';
+
 
 // ** Postion ******************************************************************
 function getOffset(element: HTMLElement) {

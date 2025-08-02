@@ -1,9 +1,9 @@
 import {
-  IResource,
-  IIsPressed,
-  IEffectOptions,
-  IUserEffectOptions,
-  IEnableEffectFunc,
+  type IResource,
+  type IIsPressed,
+  type IEffectOptions,
+  type IUserEffectOptions,
+  type IEnableEffectFunc,
 } from './types';
 import {
   preProcessElement,
