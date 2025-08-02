@@ -21,6 +21,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+default:
+  run:
+    working-directory: ./demo
+
 jobs:
   # Single deploy job since we're just deploying
   deploy:
@@ -37,8 +41,6 @@ jobs:
           node-version: lts/*
           cache: 'npm'
 
-      - name: Go to Demo project
-        run: cd ./demo/
       - name: Install dependencies
         run: npm ci
       - name: Build
