@@ -6,7 +6,9 @@ Apply reveal effect to border and background of elements.
 <img width="884" height="580" alt="image" src="https://github.com/user-attachments/assets/f333821f-2269-4604-832b-bf5d4d2e7510" />
 
 ### Demo
-See the [Demo project](https://github.com/d2phap/fluent-reveal-effect/tree/main/demo) for detail or visit https://imageglass.org for live demo.
+See the [Demo project](https://github.com/d2phap/fluent-reveal-effect/tree/main/demo) for detail or visit
+- https://codesandbox.io/p/sandbox/phgz7p
+- https://imageglass.org for live demo.
 
 ## Install
 Run the command
