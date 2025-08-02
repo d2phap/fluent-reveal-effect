@@ -3,12 +3,10 @@ Apply reveal effect to border and background of elements.
 
 [![NPM Downloads](https://img.shields.io/npm/d18m/fluent-reveal-effect)](https://www.npmjs.com/package/fluent-reveal-effect)
 
-![Screenshot](https://github.com/d2phap/fluent-ui/raw/master/docs/screenshot.png)
-
+<img width="884" height="580" alt="image" src="https://github.com/user-attachments/assets/f333821f-2269-4604-832b-bf5d4d2e7510" />
 
 ### Demo
-- https://imageglass.org/
-- https://d2phap.github.io/fluent-reveal-effect/
+See the [Demo project](https://github.com/d2phap/fluent-reveal-effect/tree/main/demo) for detail or visit https://imageglass.org for live demo.
 
 ## Install
 Run the command
